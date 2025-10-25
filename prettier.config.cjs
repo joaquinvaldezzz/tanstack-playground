@@ -1,6 +1,7 @@
 /**
  * @type {import("prettier").Config &
  *   import("@ianvs/prettier-plugin-sort-imports").PluginConfig &
+ *   import("prettier-plugin-jsdoc").Options &
  *   import("prettier-plugin-tailwindcss").PluginOptions}
  */
 module.exports = {
