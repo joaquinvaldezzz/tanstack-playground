@@ -1,23 +1,24 @@
-import { useState } from "react";
+import { Fragment, useState } from "react";
 import { Link } from "@tanstack/react-router";
 import { Home, Menu, X } from "lucide-react";
 
-export default function Header() {
+const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <>
+    <Fragment>
       <header className="flex items-center bg-gray-800 p-4 text-white shadow-lg">
         <button
-          onClick={() => setIsOpen(true)}
           className="rounded-lg p-2 transition-colors hover:bg-gray-700"
+          type="button"
           aria-label="Open menu"
+          onClick={() => setIsOpen(true)}
         >
           <Menu size={24} />
         </button>
         <h1 className="ml-4 text-xl font-semibold">
           <Link to="/">
-            <img src="/tanstack-word-logo-white.svg" alt="TanStack Logo" className="h-10" />
+            <img className="h-10" src="/tanstack-word-logo-white.svg" alt="TanStack Logo" />
           </Link>
         </h1>
       </header>
@@ -30,9 +31,10 @@ export default function Header() {
         <div className="flex items-center justify-between border-b border-gray-700 p-4">
           <h2 className="text-xl font-bold">Navigation</h2>
           <button
-            onClick={() => setIsOpen(false)}
             className="rounded-lg p-2 transition-colors hover:bg-gray-800"
+            type="button"
             aria-label="Close menu"
+            onClick={() => setIsOpen(false)}
           >
             <X size={24} />
           </button>
@@ -40,9 +42,9 @@ export default function Header() {
 
         <nav className="flex-1 overflow-y-auto p-4">
           <Link
+            className="mb-2 flex items-center gap-3 rounded-lg p-3 transition-colors hover:bg-gray-800"
             to="/"
             onClick={() => setIsOpen(false)}
-            className="mb-2 flex items-center gap-3 rounded-lg p-3 transition-colors hover:bg-gray-800"
             activeProps={{
               className:
                 "flex items-center gap-3 p-3 rounded-lg bg-cyan-600 hover:bg-cyan-700 transition-colors mb-2",
@@ -57,6 +59,8 @@ export default function Header() {
           {/* Demo Links End */}
         </nav>
       </aside>
-    </>
+    </Fragment>
   );
-}
+};
+
+export default Header;

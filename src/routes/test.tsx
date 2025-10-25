@@ -1,15 +1,7 @@
 import { useRef, useState } from "react";
-import { formOptions } from "@tanstack/react-form";
 import { createFileRoute } from "@tanstack/react-router";
 
-interface User {
-  firstName: string;
-  lastName: string;
-  hobbies: Array<string>;
-}
-const defaultUser: User = { firstName: "", lastName: "", hobbies: [] };
-
-function Page() {
+const Page = () => {
   const fruitsList = ["apple", "zebra", "banana", "mango", "durian", "orange"];
   const [fruits, setFruits] = useState<string[]>(fruitsList);
   const inputRef = useRef<HTMLInputElement | null>(null);
@@ -36,8 +28,8 @@ function Page() {
   return (
     <div className="pt-4">
       <div className="flex flex-col gap-3 md:flex-row">
-        <input ref={inputRef} name="fruit" placeholder="Please put fruit name here..." />
-        <button onClick={handleAddFruit} className="">
+        <input name="fruit" placeholder="Please put fruit name here..." ref={inputRef} />
+        <button className="" type="button" onClick={handleAddFruit}>
           Add Fruit
         </button>
       </div>
@@ -55,9 +47,9 @@ function Page() {
       </p>
     </div>
   );
-}
+};
 
-export const Route = createFileRoute("/test")({
+const Route = createFileRoute("/test")({
   component: Page,
   head: () => ({
     meta: [
@@ -103,3 +95,5 @@ export const Route = createFileRoute("/test")({
     ],
   }),
 });
+
+export default Route;

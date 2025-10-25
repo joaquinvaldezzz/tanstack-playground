@@ -1,10 +1,11 @@
+import { Fragment } from "react";
 import { TanStackDevtools } from "@tanstack/react-devtools";
 import { createRootRoute, HeadContent, Outlet, Scripts } from "@tanstack/react-router";
 import { TanStackRouterDevtoolsPanel } from "@tanstack/react-router-devtools";
 
-export const Route = createRootRoute({
+const Route = createRootRoute({
   component: () => (
-    <>
+    <Fragment>
       <HeadContent />
       <Outlet />
       <TanStackDevtools
@@ -19,6 +20,8 @@ export const Route = createRootRoute({
         ]}
       />
       <Scripts />
-    </>
+    </Fragment>
   ),
 });
+
+export default Route;
