@@ -43,6 +43,7 @@ const reactConfig = [
       "react/jsx-sort-props": "off",
       // Disable Import X order rules to avoid conflicts with @ianvs/prettier-plugin-sort-imports
       "import-x/order": "off",
+      "import-x/prefer-default-export": "off",
     },
   },
 ];
