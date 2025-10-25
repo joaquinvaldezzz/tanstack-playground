@@ -1,7 +1,15 @@
-/** @type {import('prettier').Config & import('@ianvs/prettier-plugin-sort-imports').PluginConfig&import('prettier-plugin-tailwindcss').PluginOptions  } */
+/**
+ * @type {import("prettier").Config &
+ *   import("@ianvs/prettier-plugin-sort-imports").PluginConfig &
+ *   import("prettier-plugin-tailwindcss").PluginOptions}
+ */
 module.exports = {
   printWidth: 100,
-  plugins: ["@ianvs/prettier-plugin-sort-imports", "prettier-plugin-tailwindcss"],
+  plugins: [
+    "@ianvs/prettier-plugin-sort-imports",
+    "prettier-plugin-jsdoc",
+    "prettier-plugin-tailwindcss",
+  ],
   importOrder: [
     "^(react/(.*)$)|^(react$)",
     "^(next/(.*)$)|^(next$)",
