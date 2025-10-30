@@ -8,17 +8,19 @@ const Route = createRootRoute({
     <Fragment>
       <HeadContent />
       <Outlet />
-      <TanStackDevtools
-        config={{
-          position: "bottom-right",
-        }}
-        plugins={[
-          {
-            name: "Tanstack Router",
-            render: <TanStackRouterDevtoolsPanel />,
-          },
-        ]}
-      />
+      {process.env.NODE_ENV === "development" && (
+        <TanStackDevtools
+          config={{
+            position: "bottom-right",
+          }}
+          plugins={[
+            {
+              name: "Tanstack Router",
+              render: <TanStackRouterDevtoolsPanel />,
+            },
+          ]}
+        />
+      )}
       <Scripts />
     </Fragment>
   ),
