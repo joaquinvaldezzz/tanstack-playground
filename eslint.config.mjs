@@ -1,4 +1,5 @@
 import path from "node:path";
+
 import { includeIgnoreFile } from "@eslint/compat";
 import js from "@eslint/js";
 import { configs, plugins, rules } from "eslint-config-airbnb-extended";
