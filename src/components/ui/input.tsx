@@ -5,7 +5,7 @@ import type { GroupProps, InputProps as PrimitiveInputProps } from "react-aria-c
 import { cx } from "@/lib/primitive";
 
 interface InputProps extends PrimitiveInputProps {
-  ref?: React.RefObject<HTMLInputElement>;
+  ref?: React.RefObject<HTMLInputElement | null>;
 }
 
 export const Input = ({ className, ref = undefined, ...props }: InputProps) => (

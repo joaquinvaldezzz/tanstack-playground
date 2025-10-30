@@ -20,7 +20,7 @@ const FruitsList = () => {
 
   const handleAddFruit = () => {
     // If the input is empty or ...
-    if (inputRef.current == null || inputRef.current.value === "") return;
+    if (!inputRef.current || inputRef.current.value === "") return;
 
     // if the fruit already exists (case insensitive), ...
     if (fruits.includes(inputRef.current.value.toLowerCase())) return;
