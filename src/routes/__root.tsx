@@ -24,4 +24,4 @@ const Route = createRootRoute({
   ),
 });
 
-export default Route;
+export { Route };

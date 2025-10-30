@@ -26,10 +26,20 @@ const Page = () => {
   };
 
   return (
-    <div className="pt-4">
+    <div className="container mx-auto px-4 pt-4">
       <div className="flex flex-col gap-3 md:flex-row">
-        <input name="fruit" placeholder="Please put fruit name here..." ref={inputRef} />
-        <button className="" type="button" onClick={handleAddFruit}>
+        <input
+          className="rounded-lg"
+          name="fruit"
+          type="text"
+          placeholder="Please put fruit name here..."
+          ref={inputRef}
+        />
+        <button
+          className="rounded-lg bg-blue-600 px-2 py-3 text-white"
+          type="button"
+          onClick={handleAddFruit}
+        >
           Add Fruit
         </button>
       </div>
@@ -49,7 +59,7 @@ const Page = () => {
   );
 };
 
-const Route = createFileRoute("/test")({
+export const Route = createFileRoute("/test")({
   component: Page,
   head: () => ({
     meta: [
@@ -95,5 +105,3 @@ const Route = createFileRoute("/test")({
     ],
   }),
 });
-
-export default Route;

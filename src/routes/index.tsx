@@ -68,4 +68,4 @@ const Route = createFileRoute("/")({
   }),
 });
 
-export default Route;
+export { Route };
