@@ -1,9 +1,11 @@
-import { useRef, useState } from "react";
+import { useCallback, useRef, useState } from "react";
 
 import { createFileRoute } from "@tanstack/react-router";
 
 import { Button } from "@/components/ui/button";
+import { FieldError, Label } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
+import { TextField } from "@/components/ui/text-field";
 
 const FruitsList = () => {
   /**
@@ -18,34 +20,32 @@ const FruitsList = () => {
   const [fruits, setFruits] = useState<string[]>(fruitsList);
   const inputRef = useRef<HTMLInputElement>(null);
 
-  const handleAddFruit = () => {
+  const handleAddFruit = useCallback(() => {
     // If the input is empty or ...
-    if (!inputRef.current || inputRef.current.value === "") return;
+    if (inputRef.current == null || inputRef.current.value.trim() === "") return;
 
-    // if the fruit already exists (case insensitive), ...
-    if (fruits.includes(inputRef.current.value.toLowerCase())) return;
+    const newFruit = inputRef.current.value.toLowerCase();
 
-    // do nothing.
+    setFruits((prevFruits) => {
+      // if the fruit already exists (case insensitive), do nothing
+      if (prevFruits.includes(newFruit)) return prevFruits;
 
-    // Otherwise, add the fruit to the list
-    setFruits([...fruits, inputRef.current.value]);
+      // Otherwise, add the fruit to the list and sort in one operation
+      return [...prevFruits, newFruit].sort((a, b) => a.localeCompare(b));
+    });
 
     // Clear the input
     inputRef.current.value = "";
-
-    // Sort the fruits after adding
-    setFruits((prevFruits) => [...prevFruits].sort((a, b) => a.localeCompare(b)));
-  };
+  }, []);
 
   return (
     <div className="container mx-auto px-4 pt-4">
       <div className="flex flex-col gap-3 md:flex-row">
-        <Input
-          className="rounded-lg border border-gray-300 px-3 py-2 placeholder:text-gray-600"
-          name="fruit"
-          placeholder="Please put fruit name here..."
-          ref={inputRef}
-        />
+        <TextField>
+          <Label>Fruit</Label>
+          <Input placeholder="Add a fruit" ref={inputRef} />
+          <FieldError />
+        </TextField>
         <Button type="button" onClick={handleAddFruit} isCircle>
           Add fruit
         </Button>
