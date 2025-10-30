@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as TestRouteImport } from './routes/test'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as BeginnerFruitListRouteImport } from './routes/beginner/fruit-list'
 import { Route as BeginnerCounterRouteImport } from './routes/beginner/counter'
 
 const TestRoute = TestRouteImport.update({
@@ -23,6 +24,11 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const BeginnerFruitListRoute = BeginnerFruitListRouteImport.update({
+  id: '/beginner/fruit-list',
+  path: '/beginner/fruit-list',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const BeginnerCounterRoute = BeginnerCounterRouteImport.update({
   id: '/beginner/counter',
   path: '/beginner/counter',
@@ -33,30 +39,34 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/test': typeof TestRoute
   '/beginner/counter': typeof BeginnerCounterRoute
+  '/beginner/fruit-list': typeof BeginnerFruitListRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/test': typeof TestRoute
   '/beginner/counter': typeof BeginnerCounterRoute
+  '/beginner/fruit-list': typeof BeginnerFruitListRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/test': typeof TestRoute
   '/beginner/counter': typeof BeginnerCounterRoute
+  '/beginner/fruit-list': typeof BeginnerFruitListRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/test' | '/beginner/counter'
+  fullPaths: '/' | '/test' | '/beginner/counter' | '/beginner/fruit-list'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/test' | '/beginner/counter'
-  id: '__root__' | '/' | '/test' | '/beginner/counter'
+  to: '/' | '/test' | '/beginner/counter' | '/beginner/fruit-list'
+  id: '__root__' | '/' | '/test' | '/beginner/counter' | '/beginner/fruit-list'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   TestRoute: typeof TestRoute
   BeginnerCounterRoute: typeof BeginnerCounterRoute
+  BeginnerFruitListRoute: typeof BeginnerFruitListRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -75,6 +85,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/beginner/fruit-list': {
+      id: '/beginner/fruit-list'
+      path: '/beginner/fruit-list'
+      fullPath: '/beginner/fruit-list'
+      preLoaderRoute: typeof BeginnerFruitListRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/beginner/counter': {
       id: '/beginner/counter'
       path: '/beginner/counter'
@@ -89,6 +106,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   TestRoute: TestRoute,
   BeginnerCounterRoute: BeginnerCounterRoute,
+  BeginnerFruitListRoute: BeginnerFruitListRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
