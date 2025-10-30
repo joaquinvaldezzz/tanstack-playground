@@ -61,6 +61,7 @@ const typescriptConfig = [
   {
     rules: {
       "@typescript-eslint/explicit-module-boundary-types": "off",
+      "react/require-default-props": ["error", { functions: "defaultArguments" }],
     },
   },
 ];
