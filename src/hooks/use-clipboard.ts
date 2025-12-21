@@ -14,7 +14,6 @@ export function useClipboard() {
     } catch (error) {
       // eslint-disable-next-line no-console
       console.warn("Failed to copy to clipboard:", error);
-      setIsCopied(false);
     }
   }, []);
 
