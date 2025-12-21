@@ -27,3 +27,11 @@ export async function withTimeout<T>(promise: Promise<T>, ms: number) {
 
   return Promise.race([promise, timeout]);
 }
+
+export function safeJSONParse<T>(jsonString: string, defaultValue: T): T {
+  try {
+    return JSON.parse(jsonString) as T;
+  } catch {
+    return defaultValue;
+  }
+}
