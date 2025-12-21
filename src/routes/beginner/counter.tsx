@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-
 import { createFileRoute } from "@tanstack/react-router";
 
 const CounterPage = () => {

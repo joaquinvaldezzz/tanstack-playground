@@ -6,9 +6,9 @@ import {
 import { twMerge } from "tailwind-merge";
 import { tv } from "tailwind-variants";
 
-import type { FieldErrorProps, LabelProps, TextProps } from "react-aria-components";
-
 import { cx } from "@/lib/primitive";
+
+import type { FieldErrorProps, LabelProps, TextProps } from "react-aria-components";
 
 export const labelStyles = tv({
   base: "select-none text-base/6 text-fg in-disabled:opacity-50 group-disabled:opacity-50 sm:text-sm/6",

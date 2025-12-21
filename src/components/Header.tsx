@@ -1,5 +1,4 @@
 import { Fragment, useState } from "react";
-
 import { Link } from "@tanstack/react-router";
 import { Home, Menu, X } from "lucide-react";
 
