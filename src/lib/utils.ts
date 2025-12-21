@@ -10,3 +10,9 @@ export function cn(...inputs: ClassValue[]) {
 export function uid() {
   return Math.random().toString(36).slice(2, 10);
 }
+
+export async function sleep(ms: number) {
+  return new Promise((resolve) => {
+    setTimeout(resolve, ms);
+  });
+}
